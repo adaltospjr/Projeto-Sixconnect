@@ -6,15 +6,9 @@
 <div class="alert alert-danger" role="alert">
 	{{ message }}
 </div>
-<form action="{{url_for('deletar_clientes')}}" method="POST">
-	<div class="form-group">
-		<label>Id</label>
-		<input type="number" class="form-control" name="id" placeholder="Digite o id do cliente" required>
-	</div>
-	<button class="btn btn-danger">Deletar</button>
-	<input type="reset" value="Limpar">
-</form>
 {% else %}
+<br>
+{% endif %}
 <form action="{{url_for('deletar_clientes')}}" method="POST">
 	<div class="form-group">
 		<label>Id</label>
@@ -23,5 +17,4 @@
 	<button class="btn btn-danger">Deletar</button>
 	<input type="reset" value="Limpar">
 </form>
-{% endif %}
 {% endblock conteudo %}

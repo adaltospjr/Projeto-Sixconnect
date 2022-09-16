@@ -6,19 +6,9 @@
 <div class="alert alert-danger" role="alert">
 	{{ message }}
 </div>
-<form action="{{url_for('atualizar_cliente')}}" method="POST">
-	<div class="form-group">
-		<label>Id</label>
-		<input type="number" class="form-control" name="id" placeholder="Digite o id do cliente" required>
-		<label>Nome</label>
-		<input type="text" class="form-control" name="nome" placeholder="Digite o nome do cliente" required>
-		<label>Email</label>
-		<input type="email" class="form-control" name="email" placeholder="Digite o email do cliente" required>
-	</div>
-	<button class="btn btn-secondary">Atualizar</button>
-	<input type="reset" value="Limpar">
-</form>
 {% else %}
+<br>
+{% endif %}
 <form action="{{url_for('atualizar_cliente')}}" method="POST">
 	<div class="form-group">
 		<label>Id</label>
@@ -31,5 +21,4 @@
 	<button class="btn btn-secondary">Atualizar</button>
 	<input type="reset" value="Limpar">
 </form>
-{% endif %}
 {% endblock conteudo %}
