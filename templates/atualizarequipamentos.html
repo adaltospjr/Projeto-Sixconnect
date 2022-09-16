@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Atualizar Equipamentos</h2>
+<br>
+{% if message %}
+<div class="alert alert-danger" role="alert">
+	{{ message }}
+</div>
+<form action="{{url_for('atualizar_equipamento')}}" method="POST">
+	<div class="form-group">
+		<label>Id</label>
+		<input type="number" class="form-control" name="id" placeholder="Digite o id do produto" required>
+		<label>Nome</label>
+		<input type="text" class="form-control" name="nome" placeholder="Digite o nome do produto" required>
+		<label>Código</label>
+		<input type="number" class="form-control" name="codigo" placeholder="Digite o código do produto" required>
+		<label>QTDE</label>
+		<input type="number" class="form-control" name="qtde" placeholder="Digite à quantidade" required>
+	</div>
+	<button class="btn btn-secondary">Atualizar</button>
+	<input type="reset" value="Limpar">
+</form>
+{% else %}
+<form action="{{url_for('atualizar_equipamento')}}" method="POST">
+	<div class="form-group">
+		<label>Id</label>
+		<input type="number" class="form-control" name="id" placeholder="Digite o id do produto" required>
+		<label>Nome</label>
+		<input type="text" class="form-control" name="nome" placeholder="Digite o nome do produto" required>
+		<label>Código</label>
+		<input type="number" class="form-control" name="codigo" placeholder="Digite o código do produto" required>
+		<label>QTDE</label>
+		<input type="number" class="form-control" name="qtde" placeholder="Digite à quantidade disponível no estoque" required>
+	</div>
+	<button class="btn btn-secondary">Atualizar</button>
+	<input type="reset" value="Limpar">
+</form>
+{% endif %}
+{% endblock conteudo %}

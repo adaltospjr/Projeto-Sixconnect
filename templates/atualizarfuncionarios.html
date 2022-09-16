@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<body>
+<h2 style="text-align: center;">Atualizar Funcionários</h2>
+<br>
+{% if message %}
+<div class="alert alert-danger" role="alert">
+	{{ message }}
+</div>
+<form action="{{url_for('atualizar_funcionario')}}" method="POST">
+	<div class="form-group">
+		<label>Id</label>
+		<input type="number" class="form-control" name="id" placeholder="Digite o id do funcionário" required>
+		<label>Nome</label>
+		<input type="text" class="form-control" name="nome" placeholder="Digite o nome do funcionário" required>
+		<label>Email</label>
+		<input type="email" class="form-control" name="email" placeholder="Digite o email do funcionário" required>
+	</div>
+	<button class="btn btn-secondary">Atualizar</button>
+	<input type="reset" value="Limpar">
+</form>
+{% else %}
+<form action="{{url_for('atualizar_funcionario')}}" method="POST">
+	<div class="form-group">
+		<label>Id</label>
+		<input type="number" class="form-control" name="id" placeholder="Digite o id do funcionário" required>
+		<label>Nome</label>
+		<input type="text" class="form-control" name="nome" placeholder="Digite o nome do funcionário" required>
+		<label>Email</label>
+		<input type="email" class="form-control" name="email" placeholder="Digite o email do funcionário" required>
+	</div>
+	<button class="btn btn-secondary">Atualizar</button>
+	<input type="reset" value="Limpar">
+</form>
+{% endif %}
+{% endblock conteudo %}
+

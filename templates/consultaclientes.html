@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <h2 style="text-align: center;">Clientes cadastrados</h2>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for clientes in clientes %}
+        <tr>
+            <td>{{ clientes.id_cliente }}</td>
+            <td>{{ clientes.name }}</td>
+            <td>{{ clientes.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock conteudo %}

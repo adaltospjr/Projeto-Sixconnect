@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <h2 style="text-align: center;">Funcionários cadastrados</h2>
+<br>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for funcionarios in funcionarios %}
+        <tr>
+            <td>{{ funcionarios.id_funcionario }}</td>
+            <td>{{ funcionarios.name }}</td>
+            <td>{{ funcionarios.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock conteudo %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2 style="text-align: center;">Equipamentos cadastrados</h2>
+<br>
+<table class="table table-dark table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Código</th>
+          <th scope="col">QTDE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for equipamentos in equipamentos %}
+        <tr>
+            <td>{{ equipamentos.id_equipamento }}</td>
+            <td>{{ equipamentos.name }}</td>
+            <td>{{ equipamentos.codigo }}</td>
+            <td>{{ equipamentos.qtde }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock conteudo %}
