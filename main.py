@@ -6,28 +6,31 @@ from conexao import Clientes, Funcionarios, Equipamentos, db, app
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired, Length, AnyOf
+from pagamento import pagamento
 
-app.config['SECRET_KEY'] = 'Thisisasecret!'
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6LdoUiMiAAAAAC2Tp_8caBVKI_PzUE45CELwRis3'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6LdoUiMiAAAAAMdyUEFyNno-3Xt0k1-bB-LRS4JV'
-app.config['TESTING'] = True
-
-class LoginForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired('A username is required!'), Length(min=5, max=10, message='Must be between 5 and 10 characters.')])
-    password = PasswordField('password', validators=[InputRequired('Password is required!'), AnyOf(values=['password', 'secret'])])
-    recaptcha = RecaptchaField()
-
-@app.route('/form', methods=['GET', 'POST'])
-def form():
-    form = LoginForm()
-
-    if form.validate_on_submit():
-        return '<h1>The username is {}. The password is {}.'.format(form.username.data, form.password.data)
-    return render_template('form.html', form=form)
 
 @app.route('/')
 def main():
     return render_template('index.html')
+
+@app.route('/ficha')
+def get_ficha():
+    return render_template('ficha.html')
+
+@app.route('/ficha',  methods=["POST"])
+def cadastrar_ficha():
+    nome = str(request.form.get("nome"))
+    servico = str(request.form.get("servico"))
+    email = str(request.form.get("email"))
+    
+    pay = pagamento(nome=nome, servico=servico, email=email)
+
+    return render_template('consultarficha.html', pay=pay)
+
+#@app.route('/consultarficha')
+#def consulta_ficha():
+#    clientes = Clientes.query.all()
+#    return render_template('consultaclientes.html', clientes=clientes)
 
 @app.route('/cadastrarfuncionarios')
 def get_funcionarios():

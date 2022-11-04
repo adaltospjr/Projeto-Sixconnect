@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h2 style="text-align: center;">Ficha de Pagamento</h2>
+<br>
+<form action="{{url_for('cadastrar_ficha')}}" method="POST">
+    <div class="form-group">
+        <label>Tipo de Serviço</label>
+        <input type="text" class="form-control" name="servico" placeholder="Digite o serviço" required>
+        <label>E-mail</label>
+        <input type="email" class="form-control" name="email" placeholder="Digite o e-mail do cliente" required>
+        <label>Nome</label>
+        <input type="text" class="form-control" name="nome" placeholder="Digite o nome do cliente" required>
+    </div>
+    <button class="btn btn-primary">Adicionar</button>
+</form>
+{% endblock conteudo %}
