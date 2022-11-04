@@ -1,5 +1,4 @@
 from flask import render_template, request, request
-from flask_sqlalchemy import SQLAlchemy
 from twitter import busca
 from envio import novos_clientes, clientes_antigo, pagamento_servico
 from conexao import Clientes, Funcionarios, Equipamentos, db, app
@@ -20,6 +19,16 @@ def cadastrar_ficha():
     servico = str(request.form.get("servico"))
     email = str(request.form.get("email"))
     valor = float(request.form.get("valor"))
+    validador = nome.replace(" ", "")
+
+    if not valor >= 0:
+        message = "Por favor, digite um valor positivo"
+        return render_template("consultarficha.html", message=message)
+
+    
+    elif not validador.isalpha():
+        message = "Por favor, digite somente letras no campo nome."
+        return render_template("consultarficha.html", message=message)
 
     pay = pagamento(valor=valor, servico=servico, email=email,  nome=nome)
 

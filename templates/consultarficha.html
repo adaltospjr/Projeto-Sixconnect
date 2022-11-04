@@ -2,12 +2,19 @@
 {% block conteudo %}
     <h2 style="text-align: center;">Link para Pagamento do Serviço</h2>
 <br>
+{% if message %}
+<div class="alert alert-danger" role="alert">
+	{{ message }}
+</div>
+{% else %}
+<br>
+{% endif %}
 <table class="table table-striped">
     <thead class="table-dark">
     </thead>
     <tbody>
         <tr>
-            <a href="{{pay}}" class="link-primary">Pagamento</a>
+            <a href="{{pay}}" class="link-primary">Link para realizar o pagamento</a>
         </tr>
     </tbody>
 </table>

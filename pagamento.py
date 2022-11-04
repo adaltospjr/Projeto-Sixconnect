@@ -19,10 +19,10 @@ def pagamento(valor, servico, email, nome):
         }
     }
 
-    payment_response = sdk.payment().create(payment_data)
-    payment = payment_response["response"]
-
-    return payment["point_of_interaction"]["transaction_data"]["ticket_url"]
-    #return payment
-
-#print(pagamento(2.0, "Serviço 10", "adalto.santos@aluno.faculdadeimpacta.com", "linhares"))
+    try:
+        payment_response = sdk.payment().create(payment_data)
+        payment = payment_response["response"]
+        
+        return payment["point_of_interaction"]["transaction_data"]["ticket_url"]
+    except:
+        return print('Erro na hora de gerar o pagamento. Por favor, tente novamente.')
