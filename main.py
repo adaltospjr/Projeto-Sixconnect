@@ -1,11 +1,8 @@
 from flask import render_template, request, request
 from flask_sqlalchemy import SQLAlchemy
 from twitter import busca
-from envio import novos_clientes, clientes_antigo
+from envio import novos_clientes, clientes_antigo, pagamento_servico
 from conexao import Clientes, Funcionarios, Equipamentos, db, app
-from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, PasswordField
-from wtforms.validators import InputRequired, Length, AnyOf
 from pagamento import pagamento
 
 
@@ -22,15 +19,14 @@ def cadastrar_ficha():
     nome = str(request.form.get("nome"))
     servico = str(request.form.get("servico"))
     email = str(request.form.get("email"))
-    
-    pay = pagamento(nome=nome, servico=servico, email=email)
+    valor = float(request.form.get("valor"))
+
+    pay = pagamento(valor=valor, servico=servico, email=email,  nome=nome)
+
+    pagamento_servico(email, pay)
 
     return render_template('consultarficha.html', pay=pay)
 
-#@app.route('/consultarficha')
-#def consulta_ficha():
-#    clientes = Clientes.query.all()
-#    return render_template('consultaclientes.html', clientes=clientes)
 
 @app.route('/cadastrarfuncionarios')
 def get_funcionarios():
