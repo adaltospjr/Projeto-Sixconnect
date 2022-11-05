@@ -45,7 +45,7 @@ def clientes_antigo(destinatario):
 
 def pagamento_servico(destinatario, link):  
     corpo_email = f"""
-    <h1>OLÁ!</h1>
+    <h1>Olá!</h1>
     <p>Segue o link para o pagamento referente ao serviço que será prestado.</p>
     <p>{link}</p>
     <p>Atenciosamente,</p>

@@ -32,9 +32,13 @@ def cadastrar_ficha():
 
     pay = pagamento(valor=valor, servico=servico, email=email,  nome=nome)
 
+    id_compra = pay['id']
+
+    pay = pay["point_of_interaction"]["transaction_data"]["ticket_url"]
+
     pagamento_servico(email, pay)
 
-    return render_template('consultarficha.html', pay=pay)
+    return render_template('consultarficha.html', pay=pay, id_compra=id_compra)
 
 
 @app.route('/cadastrarfuncionarios')
