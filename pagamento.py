@@ -27,7 +27,3 @@ def pagamento(valor, servico, email, nome):
 
     except:
         return print('Erro na hora de gerar o pagamento. Por favor, tente novamente.')
-
-teste = pagamento(1, 'teste', 'teste@teste.com', 'teste')
-
-print(teste['status'])
